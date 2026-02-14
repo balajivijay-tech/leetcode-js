@@ -9,8 +9,6 @@ var isPalindrome = function(x) {
         revNum = num%10 + revNum*10
         num = Math.floor(num/10)
     }
-    console.log(x)
-    console.log(revNum)
     return x == revNum;
 
 };
