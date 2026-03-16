@@ -16,7 +16,7 @@ function isValidParenthesis(l, r){
 var isValid = function(s) {
     let amap = []
     for(let i=0; i<s.length; i++){
-        if(['{', '[','('].includes(s[i])){
+        if(s[i] === '{' || s[i] === '[' || s[i] === '('){
             amap.push(s[i])
         }else{
             if(isValidParenthesis(amap.pop(),s[i])){
