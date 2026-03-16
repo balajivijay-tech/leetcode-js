@@ -3,31 +3,28 @@
  * @return {boolean}
  */
 
-function isBracesValid(a,b){
-    if( a== '(' && b == ')'){
-        return true
-    }
-    if( a== '[' && b == ']'){
-        return true
-    }
-    if( a== '{' && b == '}'){
-        return true
-    }
-    return false
+function isValidParenthesis(l, r){
+    switch(l){
+        case '{':
+            return r=='}'
+        case '(':
+            return r==')'
+        case '[':
+            return r==']'
+    }    
 }
 var isValid = function(s) {
-    if(s.length%2 != 0 ){
-        return false
-    }
-    let bracStack = []
+    let amap = []
     for(let i=0; i<s.length; i++){
-        if(['{','[','('].includes(s[i])){
-            bracStack.push(s[i])
+        if(['{', '[','('].includes(s[i])){
+            amap.push(s[i])
         }else{
-            if(!isBracesValid(bracStack.pop(),s[i])){
-                return false
+            if(isValidParenthesis(amap.pop(),s[i])){
+                continue
             }
+            return false
         }
+
     }
-    return bracStack.length == 0
+    return amap.length === 0
 };
